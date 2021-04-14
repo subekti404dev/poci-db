@@ -1,5 +1,5 @@
 import InternetUtils from "./utils/internet.utils";
-import generateReplicationId from "./utils/replication.utils";
+import ReplicationUtils from "./utils/replication.utils";
 import PouchDB from "./utils/pouch-db.utils";
 import ReactNativeUtils from "./utils/react-native.utils";
 
@@ -219,7 +219,7 @@ class PociDB {
   try {
    const replicationId =
     this.replicationId ||
-    (await generateReplicationId(this._dbLocal, this._dbRemote, {}));
+    (await ReplicationUtils.generateReplicationId(this._dbLocal, this._dbRemote, {}));
 
    const replicationDoc = await this._dbLocal.get(replicationId);
    const unuploadeds = await this._dbLocal.changes({
